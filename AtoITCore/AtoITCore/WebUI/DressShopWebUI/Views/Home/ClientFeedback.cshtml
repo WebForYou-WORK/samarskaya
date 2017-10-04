@@ -1,0 +1,212 @@
+﻿@using Domain.Entityes
+@using DressShopWebUI.Models
+@model PageModel
+@{
+    ViewBag.Title = "Отзывы";
+}
+<div class="row menu-top">
+    <div class="container-fuild menu">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Home/Index"><span>О ДИЗАЙНЕРЕ</span></a>
+                    </li>
+                    <li>
+                        <a href="/Home/Selling"><span>ONLINE-ГАРДЕРОБ</span></a>
+                    </li>
+                    <li>
+                        <a href="/Home/Gallery"><span>ГАЛЕРЕЯ</span></a>
+                    </li>
+                    <li>
+                        <a href="/Home/Partners"><span>ПАРТНЕРЫ</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="/Home/ClientFeedback"><span>ОТЗЫВЫ</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+@Html.Action("Slider", "Home")
+<style>
+    #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+        background: url('/img/stars.png') no-repeat;
+    }
+
+    #reviewStars-input {
+        overflow: hidden;
+        *zoom: 1;
+        position: relative;
+        float: left;
+    }
+
+    #reviewStars-input input {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        opacity: 0;
+        width: 23px;
+        height: 21px;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+    }
+
+    #reviewStars-input input:checked ~ label {
+        background-position: 0 -20px;
+        height: 21px;
+        width: 23px;
+    }
+
+    #reviewStars-input label {
+        background-position: 0 0;
+        height: 21px;
+        width: 23px;
+        float: right;
+        cursor: pointer;
+        margin-right: 10px;
+        position: relative;
+        z-index: 1;
+    }
+
+    #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+        background-position: 0 -20px;
+        height: 21px;
+        width: 23px;
+    }
+
+    #reviewStars-input #star-0 {
+        left: 0;
+    }
+
+    #reviewStars-input #star-1 {
+        left: 33px;
+    }
+
+    #reviewStars-input #star-2 {
+        left: 66px;
+    }
+
+    #reviewStars-input #star-3 {
+        left: 99px;
+    }
+
+    #reviewStars-input #star-4 {
+        left: 132px;
+    }
+
+    #reviewStars-input #star-5 {
+        left: 165px;
+    }
+</style>
+<br/>
+@if (TempData["messageOk"] != null)
+{
+    <div align="center"><h4 style="color: green">@TempData["messageOk"]</h4></div>
+            <br />
+            <br />
+}
+@if (TempData["message"] != null)
+{
+    <div align="center"><h4 style="color: red">@TempData["message"]</h4></div>
+            <br />
+            <br />
+}
+<div class="container otzyv">
+@foreach (var item in Model.Reviewses)
+{
+    <div class="row otziv">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <p class="otzyv-name">@item.ClientName</p>
+            <p class="otzyv-data">@item.DateFeedback.ToString("dd.MM.yyyy")</p>
+            <p class="otzyv-zirka">
+                @for (int a = 0; a < item.Rating; a++)
+                {
+                    string title = "";
+                    if (item.Rating.Equals(5))
+                    {
+                        title = "Великолепно!";
+                    }
+                    if (item.Rating.Equals(4))
+                    {
+                        title = "Хорошо";
+                    }
+                    if (item.Rating.Equals(3))
+                    {
+                        title = "Средне";
+                    }
+                    if (item.Rating.Equals(2))
+                    {
+                        title = "так себе";
+                    }
+                    if (item.Rating.Equals(1))
+                    {
+                        title = "Плохо!";
+                    }
+                    <img title="@title" src="~/img/zirkap.png" />
+                }
+            </p>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <img src="~/img/verchkoma.png" alt="">
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p>@item.ClientFeedback</p>
+            @if (item.Advantages != null)
+            {
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                        <img src="~/img/plus.png" alt="">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <p>@item.Advantages</p>
+                    </div>
+                </div>
+            }
+            @if (item.LackOf != null)
+            {
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                        <img src="~/img/minus.png" alt="">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <p>@item.LackOf</p>
+                    </div>
+                </div>
+            
+            }
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <img src="~/img/nizkoma.png" alt="">
+        </div>
+    </div>
+    
+        <br/>
+        }
+        <div align="center">
+            <div class="btn-group">
+                @Html.PageLinks(Model.PageInfo, x => Url.Action("ClientFeedback", new {page = x}))
+            </div>
+        </div>
+        <div class="row forma">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p>
+                    <b>ОСТАВИТЬ ОТЗЫВ</b>
+                </p>
+                @Html.Partial("NewFeedback", new Reviews())
+            </div>
+        </div>
+    </div>
+<br />
+        
