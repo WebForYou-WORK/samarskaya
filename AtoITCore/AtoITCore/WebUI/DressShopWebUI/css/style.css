@@ -94,7 +94,7 @@ html {
 }
 
 .owl-stage-outer {
-    max-height: 260px;
+    max-height: 282px;
 }
 
 .galerey-cart, .partner-cart, .tovar-cart {
@@ -102,8 +102,8 @@ html {
 }
 
 .galerey-img, .partner-img, .tovar-img {
-    height: 320px;
-    width: 240px;
+    height: 432px;
+    width: 282px;
 }
 
 .galerey-opis, .partner-opis, .tovar-opis {
@@ -243,8 +243,8 @@ html {
     }
 
 @font-face {
-    font-family: "shrift";
-    src: url("../fonts/shrift.ttf") format("truetype");
+    font-family: 'B52';
     font-style: normal;
-    font-weight: normal;
-} 
+    font-weight: 400;
+    src: local('B52'), local('B52-Regular'), url('../fonts/b52_2d0a8eb1572d73815cd2d3ef3196c48b.woff') format('woff'), url('../fonts/b52_2d0a8eb1572d73815cd2d3ef3196c48b.ttf') format('truetype');
+}

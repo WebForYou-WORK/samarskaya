@@ -156,7 +156,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\segoeuil.ttf" />
-    <Content Include="fonts\shrift.ttf" />
+    <Content Include="fonts\b52_2d0a8eb1572d73815cd2d3ef3196c48b.ttf" />
+    <Content Include="fonts\b52_2d0a8eb1572d73815cd2d3ef3196c48b.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
