@@ -32,15 +32,15 @@
 <script>
     $(document).ready(function () {
         $('.owl-carousel').owlCarousel({
-            loop: true, 
+            loop: true,
             margin: 20,
-            nav: true, 
+            nav: false,
             navText: ['&nbsp;назад&nbsp;', 'вперед'],
-            dots: false, 
+            dots: false,
             autoplay: true,
             smartSpeed: 2000,
-            autoplayTimeout: 4000, 
-            responsive: { 
+            autoplayTimeout: 4000,
+            responsive: {
                 50: {
                     items: 0
                 },
@@ -48,7 +48,7 @@
                     items: 1
                 },
                 200: {
-                    items: 6
+                    items: 7
                 }
             }
         });
