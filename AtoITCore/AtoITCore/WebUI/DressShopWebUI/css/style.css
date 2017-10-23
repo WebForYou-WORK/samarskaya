@@ -1,3 +1,6 @@
+
+
+
 .cont {
     margin-left: 20px;
     margin-right: 20px;
@@ -231,8 +234,8 @@ html {
     }
 
 @font-face {
-    font-family: "shrift";
-    src: url("../fonts/shrift.ttf") format("truetype");
+    font-family: 'B52';
     font-style: normal;
-    font-weight: normal;
-} 
+    font-weight: 400;
+    src: local('B52'), local('B52-Regular'), url('../fonts/b52_2d0a8eb1572d73815cd2d3ef3196c48b.woff') format('woff'), url('../fonts/b52_2d0a8eb1572d73815cd2d3ef3196c48b.ttf') format('truetype');
+}
