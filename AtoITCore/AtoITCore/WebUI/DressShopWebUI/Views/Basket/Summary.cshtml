@@ -1,0 +1,17 @@
+﻿@model Domain.Entityes.Basket
+<a href="@Url.Action("Index", new {returnUrl = Request.Url?.PathAndQuery})" class="basketLink">
+    
+    @{
+        if (Model.CountItem == 0)
+        {
+            <img src="~/img/cush.png" alt="Корзинка покупок" title="Корзина">
+        }
+
+        if (Model.CountItem != 0)
+        {
+           <span  style="background-image: url('../../img/basketpic1.png'); background-size:100% 100%;
+    background-position:center; 
+    background-repeat:no-repeat; margin-left: 18px; color: darkorange; font-size: 18px ">&nbsp;&nbsp;@Model.CountItem&nbsp;&nbsp;</span> 
+        }
+    }
+</a>
