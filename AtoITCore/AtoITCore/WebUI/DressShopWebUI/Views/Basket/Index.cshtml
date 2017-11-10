@@ -90,7 +90,7 @@
 
         @using (Html.BeginForm())
             {
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 itogo">
                     <h4>Данные для оформления покупки</h4>
                     @Html.EditorFor(x => x.Orders.ClientName, new { htmlAttributes = new { style = "margin: 0px; width: 100%; height: 30px;", placeholder = "Имя" } })
                     @Html.ValidationMessageFor(x => x.Orders.ClientName)
@@ -109,7 +109,7 @@
                     <br />
                     <input id="Radio2" type="radio" value="перевод на карту" name="Orders.Payment" data-val-required="Вы не выбрали способ оплаты" data-val="true" /><label style="margin: 5px">Перевод на карту</label>
                     <br />
-                    <input id="Radio3" type="radio" value="SWIFT" name="Orders.Payment" data-val-required="Вы не выбрали способ оплаты" data-val="true" /><label style="margin: 5px">SWIFT</label>
+                    <input id="Radio3" type="radio" value="Международный перевод" name="Orders.Payment" data-val-required="Вы не выбрали способ оплаты" data-val="true" /><label style="margin: 5px">Международный перевод</label>
                     @Html.ValidationMessageFor(x => x.Orders.Payment)
                     <br />
                     <br />

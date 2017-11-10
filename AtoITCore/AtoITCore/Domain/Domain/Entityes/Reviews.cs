@@ -13,7 +13,7 @@ namespace Domain.Entityes
         public int ReviewId { get; set; }
 
         [Display(Name = "Имя коментатора")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Длина имени от 3 до 20 символов")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Длина имени от 3 до 30 символов")]
         [Required(ErrorMessage = "Пожалуйста, введите Ваше имя")]
         public string ClientName { get; set; }
 
@@ -24,7 +24,7 @@ namespace Domain.Entityes
         public string ClientFeedback { get; set; }
 
         [Display(Name = "Рейтинг")]
-        [Range(typeof(int), "0", "5", ErrorMessage = "Рейтинг вычисляется от 0 до 5")]
+        [Range(typeof(int), "1", "2", ErrorMessage = "Рейтинг вычисляется от 1 до 2")]
         public int? Rating { get; set; }
 
         [Display(Name = "Email")]

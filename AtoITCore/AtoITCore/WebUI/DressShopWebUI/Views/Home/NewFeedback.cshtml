@@ -2,6 +2,16 @@
 
 @using (Html.BeginForm("Feedback", "Home", FormMethod.Post))
 {
+    <div id="radios">
+        <label for="cycling" class="material-icons">
+            <input type="radio" name="Rating" id="cycling" value="2" />
+            <span><img src="~/img/smailBad.png" title="плохо" style="margin-top:-5px" /></span>
+        </label>
+        <label for="driving" class="material-icons">
+            <input type="radio" name="Rating" id="driving" value="1" />
+            <span><img src="~/img/smailOk.png" title="Отлично!" style="margin-top:-5px" /></span>
+        </label>
+    </div>
     <br />
     @Html.EditorFor(x => x.ClientName, new { htmlAttributes = new { style = "margin: 0px; width: 60%; height: 20px;",  placeholder = "Введите ваше имя" } })
     @Html.ValidationMessageFor(x => x.ClientName)
@@ -11,24 +21,8 @@
     @Html.ValidationMessageFor(x => x.Email)
     <br />
     <br />
-    <div id="reviewStars-input">
-        <input id="star-4" type="radio" value="5" name="Rating" />
-        <label title="Великолепно!" for="star-4"></label>
-
-        <input id="star-3" type="radio" value="4" name="Rating" />
-        <label title="Хорошо" for="star-3"></label>
-
-        <input id="star-2" type="radio" value="3" name="Rating" />
-        <label title="Средне" for="star-2"></label>
-
-        <input id="star-1" type="radio" value="2" name="Rating" />
-        <label title="Так себе" for="star-1"></label>
-
-        <input id="star-0" type="radio" value="1" name="Rating" />
-        <label title="Плохо!" for="star-0"></label>
-    </div>
-    <br />
-    <br />
+    
+   
     @Html.EditorFor(x => x.ClientFeedback, new { htmlAttributes = new { style = "margin: 0px; width: 100%; height: 80px;", placeholder = "Оставьте ваш отзыв" } })
     @Html.ValidationMessageFor(x => x.ClientFeedback)
     <br />

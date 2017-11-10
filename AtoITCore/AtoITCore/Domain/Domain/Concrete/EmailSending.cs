@@ -22,7 +22,7 @@ namespace Domain.Concrete
             {
                 //c какой почты отправляем письмо 
                 MailMessage mail = new MailMessage { From = new MailAddress("samarskaya.com.ua@gmail.com") };
-                mail.To.Add(new MailAddress("atoit.ua@gmail.com")); // E-mail Администратора
+                mail.To.Add(new MailAddress("samarskaya918@gmail.com")); // E-mail Администратора
                 mail.Subject = "Новый заказ";
                 mail.Body = EmailMessageToAdministrator(basket, details);
                 if (!string.IsNullOrEmpty(attachFile))

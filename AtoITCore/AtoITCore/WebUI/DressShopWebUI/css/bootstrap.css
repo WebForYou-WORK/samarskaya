@@ -42,7 +42,7 @@ audio, canvas, video {
 }
 
 html {
-    font-family: "Lucida Sans Unicode";
+    font-family: "Segoe UI";
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%
 }
@@ -56,7 +56,7 @@ h1 {
 }
 
 b, strong {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 dfn {
@@ -245,7 +245,7 @@ html {
 }
 
 body {
-    font-family: "Lucida Sans Unicode";
+    font-family: "Segoe UI";
     font-size: 14px;
     line-height: 1.428571429;
     color: #393737;
@@ -390,9 +390,9 @@ cite {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: "Lucida Sans Unicode";
+    font-family: "Segoe UI";
     font-weight: lighter;
-    line-height: 1.1;
+    line-height: 1.5;
 }
 
     .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
@@ -1805,7 +1805,7 @@ textarea.input-lg {
 
     .btn-default.active, .btn-default:active, .btn-default:focus, .btn-default:hover, .open .dropdown-toggle.btn-default {
         color: #333;
-        background-color: #ebebeb;
+        background-color: #86563d;
         border-color: #adadad;
     }
 

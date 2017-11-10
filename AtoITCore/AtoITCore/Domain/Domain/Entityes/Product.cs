@@ -15,7 +15,7 @@ namespace Domain.Entityes
         public int ProductId { get; set; }
 
         [Display(Name = "Название товара")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина названия от 3 до 50 символов")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Длина названия от 3 до 25 символов")]
         [Required(ErrorMessage = "Пожалуйста, введите название товара")]
         public string Name { get; set; }
 

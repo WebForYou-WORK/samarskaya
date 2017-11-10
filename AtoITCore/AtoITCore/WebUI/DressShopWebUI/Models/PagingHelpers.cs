@@ -22,7 +22,7 @@ namespace DressShopWebUI.Models
             TagBuilder tagFirst = new TagBuilder("a");
             tagFirst.MergeAttribute("href", pageUrl(1));
             tagFirst.MergeAttribute("title", "в начало");
-            tagFirst.InnerHtml = "&laquo";
+            tagFirst.InnerHtml = "&laquo;";
             tagFirst.AddCssClass("btn btn-default");
             result.Append(tagFirst);
             int count = 0;

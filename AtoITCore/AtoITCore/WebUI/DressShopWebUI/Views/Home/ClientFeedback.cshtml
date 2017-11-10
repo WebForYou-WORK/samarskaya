@@ -4,6 +4,42 @@
 @{
     ViewBag.Title = "Отзывы";
 }
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    /*---------------------------------- cмайлы------------------------------------*/
+    #radios label {
+        cursor: pointer;
+        position: relative;
+    }
+
+        #radios label + label {
+            margin-left: 25px;
+        }
+
+    input[type="radio"] {
+        opacity: 0; /* hidden but still tabable */
+        position: absolute;
+    }
+
+        input[type="radio"] + span {
+            font-family: 'Material Icons';
+            color: #B3CEFB;
+            border-radius: 100%;
+            padding-bottom: 7px;
+            transition: all 0.4s;
+            -webkit-transition: all 0.4s;
+        }
+
+        input[type="radio"]:checked + span {
+            color: #D9E7FD;
+            background-color: rgba(246, 252, 34, 0.46);
+        }
+
+        input[type="radio"]:focus + span {
+            color: #fff;
+        }
+    /*---------------------------------- cмайлы------------------------------------*/
+</style>
 <div class="row menu-top">
     <div class="container-fluid menu">
         <nav class="navbar navbar-default" role="navigation">
@@ -39,75 +75,7 @@
     </div>
 </div>
 @Html.Action("Slider", "Home")
-<style>
-    #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-        background: url('/img/stars.png') no-repeat;
-    }
 
-    #reviewStars-input {
-        overflow: hidden;
-        *zoom: 1;
-        position: relative;
-        float: left;
-    }
-
-    #reviewStars-input input {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-        opacity: 0;
-        width: 23px;
-        height: 21px;
-        position: absolute;
-        top: 0;
-        z-index: 0;
-    }
-
-    #reviewStars-input input:checked ~ label {
-        background-position: 0 -20px;
-        height: 21px;
-        width: 23px;
-    }
-
-    #reviewStars-input label {
-        background-position: 0 0;
-        height: 21px;
-        width: 23px;
-        float: right;
-        cursor: pointer;
-        margin-right: 10px;
-        position: relative;
-        z-index: 1;
-    }
-
-    #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-        background-position: 0 -21px;
-        height: 21px;
-        width: 23px;
-    }
-
-    #reviewStars-input #star-0 {
-        left: 0;
-    }
-
-    #reviewStars-input #star-1 {
-        left: 33px;
-    }
-
-    #reviewStars-input #star-2 {
-        left: 66px;
-    }
-
-    #reviewStars-input #star-3 {
-        left: 99px;
-    }
-
-    #reviewStars-input #star-4 {
-        left: 132px;
-    }
-
-    #reviewStars-input #star-5 {
-        left: 165px;
-    }
-</style>
 <br/>
 @if (TempData["messageOk"] != null)
 {
@@ -125,50 +93,35 @@
 @foreach (var item in Model.Reviewses)
 {
     <div class="row otziv">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
             <p class="otzyv-name">@item.ClientName</p>
             <p class="otzyv-data">@item.DateFeedback.ToString("dd.MM.yyyy")</p>
             <p class="otzyv-zirka">
-                @for (int a = 0; a < item.Rating; a++)
-                {
-                    string title = "";
-                    if (item.Rating.Equals(5))
+                
+                    @if (item.Rating.Equals(1))
                     {
-                        title = "Великолепно!";
+                        <img title="Великолепно!" src="~/img/smailOk.png" />
                     }
-                    if (item.Rating.Equals(4))
+                    @if (item.Rating.Equals(2))
                     {
-                        title = "Хорошо";
+                        <img title="Плохо" src="~/img/smailBad.png" />
                     }
-                    if (item.Rating.Equals(3))
-                    {
-                        title = "Средне";
-                    }
-                    if (item.Rating.Equals(2))
-                    {
-                        title = "так себе";
-                    }
-                    if (item.Rating.Equals(1))
-                    {
-                        title = "Плохо!";
-                    }
-                    <img title="@title" src="~/img/zirkap.png" />
-                }
+
             </p>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <img src="~/img/verchkoma.png" alt="">
+            <img src="~/img/verchkoma.png" alt="" class="koma">
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-8 col-sm-9 col-md-9 col-lg-9">
             <p>@item.ClientFeedback</p>
             @if (item.Advantages != null)
             {
                 <div class="row">
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
                         <img src="~/img/plus.png" alt="">
                     </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="col-xs-10 col-sm-11 col-md-11col-lg-11">
                         <p>@item.Advantages</p>
                     </div>
                 </div>
@@ -176,19 +129,20 @@
             @if (item.LackOf != null)
             {
                 <div class="row">
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
                         <img src="~/img/minus.png" alt="">
                     </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
                         <p>@item.LackOf</p>
                     </div>
                 </div>
             
             }
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <img src="~/img/nizkoma.png" alt="">
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 polosa"></div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="text-align: right">
+            <img src="~/img/nizkoma.png" alt="" class="koma">
         </div>
     </div>
     
@@ -201,8 +155,8 @@
         </div>
         <div class="row forma">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <p>
-                    <b>ОСТАВИТЬ ОТЗЫВ</b>
+                <p style="font-size: 20px; text-decoration: underline;">
+                    <b>Оставьте Ваш Отзыв!</b>
                 </p>
                 @Html.Partial("NewFeedback", new Reviews())
             </div>
