@@ -1,0 +1,142 @@
+﻿@using Domain.Entityes
+@using DressShopWebUI.Models
+@model PageModel
+@{
+    ViewBag.Title = "Отзывы";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    /*---------------------------------- cмайлы------------------------------------*/
+    #radios label {
+        cursor: pointer;
+        position: relative;
+    }
+
+        #radios label + label {
+            margin-left: 25px;
+        }
+
+    input[type="radio"] {
+        opacity: 0; /* hidden but still tabable */
+        position: absolute;
+    }
+
+        input[type="radio"] + span {
+            font-family: 'Material Icons';
+            color: #B3CEFB;
+            border-radius: 100%;
+            padding-bottom: 7px;
+            transition: all 0.4s;
+            -webkit-transition: all 0.4s;
+        }
+
+        input[type="radio"]:checked + span {
+            color: #D9E7FD;
+            background-color: rgba(246, 252, 34, 0.46);
+        }
+
+        input[type="radio"]:focus + span {
+            color: #fff;
+        }
+    /*---------------------------------- cмайлы------------------------------------*/
+</style>
+<div class="row menu-top">
+    <div class="container-fluid menu">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="myLi">
+                        <a href="/Home/Index"><span style="font-weight: lighter">О ДИЗАЙНЕРЕ</span></a>
+                    </li>
+                    <li class="myLi">
+                        <a href="/Home/Selling"><span style="font-weight: lighter">ONLINE-ГАРДЕРОБ</span></a>
+                    </li>
+                    <li class="myLi">
+                        <a href="/Home/Gallery"><span style="font-weight: lighter">ГАЛЕРЕЯ</span></a>
+                    </li>
+                    <li class="myLi">
+                        <a href="/Home/Partners"><span style="font-weight: lighter">ПАРТНЕРЫ</span></a>
+                    </li>
+                    <li class="myLi active">
+                        <a href="/Home/ClientFeedback"><span style="font-weight: lighter">ОТЗЫВЫ</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+@Html.Action("Slider", "Home")
+
+<br/>
+@if (TempData["messageOk"] != null)
+{
+    <div align="center"><h4 style="color: green">@TempData["messageOk"]</h4></div>
+            <br />
+            <br />
+}
+@if (TempData["message"] != null)
+{
+    <div align="center"><h4 style="color: red">@TempData["message"]</h4></div>
+            <br />
+            <br />
+}
+<div class="container-fluid cont otzyv">
+    @if (!Model.Reviewses.Any())
+    {
+        <h4 align="center">Отзывов пока нет.</h4>
+        <br/>
+        <br />
+        <br />
+        <br />
+        <br />
+    }
+    @foreach (var item in Model.Reviewses)
+    {
+        <div class="row otziv">
+            <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                <p >@item.ClientName</p>
+                <p>@item.DateFeedback.ToString("dd.MM.yyyy")</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+                @if (item.Rating.Equals(1))
+                {
+                    <img title="Великолепно!" src="~/img/smailOk.png" style="float: right; margin-top: 12px"/>
+                }
+                @if (item.Rating.Equals(2))
+                {
+                    <img title="Плохо" src="~/img/smailBad.png" style="float: right; margin-top: 12px"/>
+                }
+            </div>
+            <div class="col-xs-7 col-sm-8 col-md-10 col-lg-10">
+                <p>@item.ClientFeedback</p>
+            </div>
+        </div>
+
+        <br/>
+    }
+    <div align="center">
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("ClientFeedback", new {page = x}))
+        </div>
+    </div>
+    <div class="row forma">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <p style="font-size: 20px; text-decoration: underline;">
+                <b>Оставьте Ваш Отзыв!</b>
+            </p>
+            @Html.Partial("NewFeedback", new Reviews())
+        </div>
+    </div>
+</div>
+<br />
+<script async src="~/Scripts/jquery.validate.min.js"></script>
+<script async src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> 
